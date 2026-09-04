@@ -1,0 +1,44 @@
+{
+  "title": "Аудит установки приставной лестницы",
+  "version": "1.0",
+  "mechanic": "workplace_inspection",
+  "content": {
+    "scenario": "Smooth floor, ladder leaning on drainpipe.",
+    "zones": [
+      {
+        "id": "zone-feet",
+        "label": "Base of ladder on smooth floor"
+      },
+      {
+        "id": "zone-pipe",
+        "label": "Top of ladder resting on drainpipe"
+      }
+    ]
+  },
+  "correct_answers": {
+    "violations": [
+      "zone-feet",
+      "zone-pipe"
+    ]
+  },
+  "feedback": {
+    "level_1_consequence": "Risk of slipping/falling due to lack of friction and unstable support.",
+    "level_2_principle": "Anti-slip measures required for smooth surfaces; never lean on drainpipes.",
+    "level_3_explanation": "Detailed reference to safety rules regarding base fixation and top support points."
+  },
+  "quality_control": {
+    "solution_hidden_before_submit": true,
+    "no_live_correctness": true,
+    "plausible_distractors": true,
+    "retry_supported": true,
+    "touch_supported": true,
+    "keyboard_supported": true
+  },
+  "pages_url": "https://vshotcamshot-arch.github.io/ot-trainer-pages-test-mtn034yj/",
+  "files": [
+    "index.html",
+    "trainer.css",
+    "trainer.js",
+    "trainer.json"
+  ]
+}
