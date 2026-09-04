@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аудит установки приставной лестницы</title>
+    <link rel="stylesheet" href="trainer.css">
+</head>
+<body>
+    <div class="trainer-container">
+        <header class="trainer-header">
+            <h1>Аудит установки приставной лестницы</h1>
+            <p class="instruction">Изучите рабочую ситуацию и подтвердите результат осмотра.</p>
+        </header>
+
+        <main class="scene-wrapper">
+            <!-- SVG Scene representing the workplace -->
+            <svg viewBox="0 0 400 500" class="workplace-svg" role="img" aria-label="Схема установки лестницы">
+                <!-- Background/Wall -->
+                <rect x="0" y="0" width="400" height="500" fill="#f0f0f0" />
+                <rect x="350" y="0" width="50" height="500" fill="#e0e0e0" /> <!-- Wall edge -->
+                
+                <!-- Floor (Smooth) -->
+                <rect x="0" y="450" width="400" height="50" fill="#dcdcdc" stroke="#999" stroke-width="1"/>
+                <text x="20" y="480" font-size="12" fill="#666">Гладкий пол</text>
+
+                <!-- Drainpipe (Violation 2) -->
+                <g id="zone-pipe" class="interactive-zone" tabindex="0" role="button" aria-pressed="false" aria-label="Верхняя опора лестницы">
+                    <rect x="320" y="50" width="20" height="400" fill="#777" rx="5" />
+                    <path d="M320 60 L340 60 M320 150 L340 150 M320 250 L340 250" stroke="#555" stroke-width="2"/>
+                    <!-- Invisible hit area for easier touch -->
+                    <rect x="310" y="40" width="40" height="150" fill="transparent" class="hit-area" />
+                </g>
+
+                <!-- Ladder -->
+                <g transform="rotate(-15, 100, 450)">
+                    <!-- Rails -->
+                    <line x1="80" y1="450" x2="80" y2="50" stroke="#d35400" stroke-width="6" />
+                    <line x1="140" y1="450" x2="140" y2="50" stroke="#d35400" stroke-width="6" />
+                    <!-- Rungs -->
+                    <line x1="80" y1="400" x2="140" y2="400" stroke="#d35400" stroke-width="4" />
+                    <line x1="80" y1="350" x2="140" y2="350" stroke="#d35400" stroke-width="4" />
+                    <line x1="80" y1="300" x2="140" y2="300" stroke="#d35400" stroke-width="4" />
+                    <line x1="80" y1="250" x2="140" y2="250" stroke="#d35400" stroke-width="4" />
+                    <line x1="80" y1="200" x2="140" y2="200" stroke="#d35400" stroke-width="4" />
+                    <line x1="80" y1="150" x2="140" y2="150" stroke="#d35400" stroke-width="4" />
+                    <line x1="80" y1="100" x2="140" y2="100" stroke="#d35400" stroke-width="4" />
+                </g>
+
+                <!-- Ladder Feet (Violation 1) -->
+                <g id="zone-feet" class="interactive-zone" tabindex="0" role="button" aria-pressed="false" aria-label="Основание лестницы">
+                    <!-- Visual representation of feet without anti-slip -->
+                    <circle cx="105" cy="450" r="8" fill="#333" />
+                    <circle cx="165" cy="450" r="8" fill="#333" />
+                    <!-- Invisible hit area -->
+                    <rect x="80" y="430" width="110" height="40" fill="transparent" class="hit-area" />
+                </g>
+            </svg>
+
+            <div id="feedback-overlay" class="feedback-overlay hidden">
+                <div class="feedback-content">
+                    <h3 id="feedback-title"></h3>
+                    <p id="feedback-text"></p>
+                    <button id="retry-btn" class="btn btn-secondary hidden">Попробовать снова</button>
+                    <button id="close-feedback-btn" class="btn btn-primary">Продолжить</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="controls">
+            <div class="status-bar">
+                <span id="selection-status">Выбрано зон: 0</span>
+            </div>
+            <button id="check-btn" class="btn btn-primary" disabled>Подтвердить осмотр</button>
+        </footer>
+    </div>
+<script src="trainer.js"></script>
+</body>
+</html>
